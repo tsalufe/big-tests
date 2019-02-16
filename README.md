@@ -2,6 +2,7 @@
 Easily test your model and logic against your big data set
 
 #example
+To test if an simple example logic inside processDataAndGetResult returns an array(or json response) that contains the same email for all of the provided samples. It outputs every failed id during the runAll loop and dump all failed ids when it finishes.
 
 ```
 <?php
