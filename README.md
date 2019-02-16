@@ -4,6 +4,7 @@ Easily test your model and logic against your big data set
 #example
 
 ```
+<?php
 require(realpath(__DIR__ . '/../vendor/autoload.php'));
 use BigTests\AbstractMysqlBigTests;
 use Illuminate\Database\Query\Builder;
