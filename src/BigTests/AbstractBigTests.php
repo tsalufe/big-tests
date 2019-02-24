@@ -6,8 +6,8 @@ abstract class AbstractBigTests implements BigTestsInterface
     public function runAll() : bool
     {
         $statuses = [];
-        foreach($this->getBigDatas() as $i => $bigData) {
-            $statuses[$i] = $this->run($bigData);
+        foreach($this->getBigDatas() as $bigData) {
+            $statuses[$this->getIdentifier($bigData)] = $this->run($bigData);
         }
         $this->finish($statuses);
         return array_search(false, $statuses) !== false;

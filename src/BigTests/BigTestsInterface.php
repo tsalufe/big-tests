@@ -9,6 +9,8 @@ interface BigTestsInterface
 
     function run($bigData) : bool;
 
+    function getIdentifier($bigData) : string;
+
     function processDataAndGetResult($data);
 
     function validate($result, $expected) : bool;

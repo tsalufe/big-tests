@@ -17,4 +17,9 @@ abstract class AbstractMysqlBigTests extends AbstractBigTests
     {
         return $this->queryBuilder->cursor();
     }
+
+    public function getIdentifier($bigData) : string
+    {
+        return $bigData->id;
+    }
 }
