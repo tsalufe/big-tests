@@ -16,6 +16,4 @@ interface BigTestsInterface
     function validate($result, $expected) : bool;
 
     function output($bigData, $status): void;
-
-    function finish(array $statuses): void;
 }

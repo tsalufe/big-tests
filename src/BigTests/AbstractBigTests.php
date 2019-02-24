@@ -3,27 +3,50 @@ namespace BigTests;
 
 abstract class AbstractBigTests implements BigTestsInterface
 {
+    protected $categories = [];
+
+    protected $statuses = [];
+
+    protected $categoryStatuses = [];
+
+    protected $errors = [];
+
     public function runAll() : bool
     {
-        $statuses = [];
+        $this->statuses = [];
         foreach($this->getBigDatas() as $bigData) {
-            $statuses[$this->getIdentifier($bigData)] = $this->run($bigData);
+            $this->statuses[$this->getIdentifier($bigData)] = $this->run($bigData);
         }
-        $this->finish($statuses);
-        return array_search(false, $statuses) !== false;
+        $this->errors = array_filter($this->statuses, function($item) {
+            return $item === false;
+        });
+        return empty($this->errors);
     }
 
     public function run($bigData) : bool
     {
-        $status = $this->validate($this->processDataAndGetResult($bigData), $bigData);
+        $result = $this->processDataAndGetResult($bigData);
+        $status = $this->validate($result, $bigData);
+        $this->categorize($result, $bigData);
         $this->output($bigData, $status);
         return $status;
     }
 
-    public function finish(array $statuses) : void
+    public function categorize($result, $bigData) {
+        foreach($this->categories as $categoryKey => $categoryCallback) {
+            if($this->$categoryCallback($result, $bigData)) {
+                $this->categoryStatuses[$categoryKey][] = $this->getIdentifier($bigData);
+            }
+        }
+    }
+
+    public function getCategoryErrors(string $category) : array
     {
-        var_dump(array_filter($statuses, function ($item) {
-            return $item === false;
-        }));
+        return $this->categoryStatuses[$category] ?? [];
+    }
+
+    public function getErrors() : array
+    {
+        return $this->errors;
     }
 }
