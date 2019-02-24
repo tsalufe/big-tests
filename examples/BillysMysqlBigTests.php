@@ -47,3 +47,4 @@ $bigTest = (new BillysMysqlBigTests($queryBuilder));
 $bigTest->runAll();
 var_dump($bigTest->getErrors());
 var_dump($bigTest->getCategoryErrors('category1'));
+var_dump($bigTest->getUncategorizedErrors());

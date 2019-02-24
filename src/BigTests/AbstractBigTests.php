@@ -49,4 +49,14 @@ abstract class AbstractBigTests implements BigTestsInterface
     {
         return $this->errors;
     }
+
+    public function getUncategorizedErrors() : array
+    {
+        if(empty($this->categories) || empty($this->categoryStatuses)) {
+            return $this->getErrors();
+        }
+        $all = $this->categoryStatuses;
+        array_unshift($all, array_keys($this->getErrors()));
+        return call_user_func_array('array_diff', $all);
+    }
 }
