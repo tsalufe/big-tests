@@ -35,7 +35,7 @@ class BillysMysqlBigTests extends AbstractMysqlBigTests
     protected function category1Callback($result, $bigData) : bool
     {
         $statusAfterCheckingSomeConditions = strlen($bigData->first_name) + strlen($bigData->last_name) > 20;
-        return $statusAfterCheckingSomeConditions && $this->validate($result, $bigData);
+        return $statusAfterCheckingSomeConditions && !$this->validate($result, $bigData);
     }
 }
 
