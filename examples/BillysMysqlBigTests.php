@@ -45,6 +45,11 @@ $queryBuilder = (new Builder($mysqlConnection))->from('users');
 
 $bigTest = (new BillysMysqlBigTests($queryBuilder));
 $bigTest->runAll();
+var_dump($bigTest->getSuccesses());
+var_dump(['Total success count' => $bigTest->getTotalSuccessCount()]);
 var_dump($bigTest->getErrors());
+var_dump(['Total error count' => $bigTest->getTotalErrorCount()]);
 var_dump($bigTest->getCategoryErrors('category1'));
+var_dump(['category1 error count' => $bigTest->getCategoryErrorCount('category1')]);
 var_dump($bigTest->getUncategorizedErrors());
+var_dump(['uncategorized error count' => $bigTest->getUncategorizedErrorCount()]);
