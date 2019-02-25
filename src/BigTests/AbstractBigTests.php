@@ -27,6 +27,6 @@ abstract class AbstractBigTests implements BigTestsInterface
 
     public function skip($result) : bool
     {
-        return false;
+        return empty($result);
     }
 }
