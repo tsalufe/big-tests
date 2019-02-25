@@ -13,6 +13,16 @@ trait CanSaveStatuses
 
     protected $successes = [];
 
+    public function getStatuses() : array
+    {
+        return $this->statuses;
+    }
+
+    public function getTotalCount() : int
+    {
+        return count($this->statuses);
+    }
+
     public function isAllSuccessful() : bool
     {
         return empty($this->errors);
