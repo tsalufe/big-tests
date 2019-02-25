@@ -72,8 +72,8 @@ trait CanSaveStatuses
         if(empty($this->categories) || empty($this->categoryStatuses)) {
             return $this->getErrors();
         }
-        $all = $this->categoryStatuses;
-        array_unshift($all, array_keys($this->getErrors()));
+        $all = array_values($this->categoryStatuses);
+        array_unshift($all, $this->getErrors());
         return call_user_func_array('array_diff', $all);
     }
 
