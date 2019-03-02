@@ -8,6 +8,10 @@ git clone https://github.com/tsalufe/big-tests.git
 
 # example
 To test if an simple example logic inside processDataAndGetResult returns an array(or json response) that contains the same email for all of the provided samples. It outputs every failed id during the runAll loop and dump all failed ids when it finishes.
+This example requires illuminate/database >=5.2
+```
+composer install illuminate/database
+```
 
 ```
 <?php
