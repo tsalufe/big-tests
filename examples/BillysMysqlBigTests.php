@@ -9,6 +9,7 @@ use Illuminate\Database\MySqlConnection;
 if(!class_exists(Builder::class)) {
     echo "Please install illuminate database to continue\n";
     echo "composer install illuminate/database\n";
+    exit;
 }
 
 class BillysMysqlBigTests extends AbstractMysqlBigTests
