@@ -6,6 +6,11 @@ use BigTests\AbstractMysqlBigTests;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\MySqlConnection;
 
+if(!class_exists(Builder::class)) {
+    echo "Please install illuminate database to continue\n";
+    echo "composer install illuminate/database\n";
+}
+
 class BillysMysqlBigTests extends AbstractMysqlBigTests
 {
     protected $categories = [

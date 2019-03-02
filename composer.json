@@ -2,8 +2,7 @@
     "name": "big-tests/big-tests",
     "description": "Easily test your model and logic against your big data set",
     "require": {
-        "php": ">5",
-        "illuminate/database": "^5.2"
+        "php": ">7"
     },
     "authors": [
         {
