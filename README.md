@@ -38,3 +38,47 @@ array (
   'category1-ids' => '[]',
 )
 ```
+
+# categorize your statistics
+Add the following to your child AbstractBigTests class,
+```
+protected $categories = [
+    'scenario1'        => 'scenario1MethodName',
+    'scenario1Success' => 'scenario1SuccessMethodName',
+    'scenario1Fail'    => 'scenario1FailMethodName',
+];
+
+protected function scenario1MethodName($result, $bigData) : bool
+{
+    // your condition for scenario 1
+}
+
+protected function scenario1SuccessMethodName($result, $bigData) : bool
+{
+    return $this->scenario1MethodName($result, $bigData)
+        && // your success check for scenario 1
+}
+
+protected function scenario1FailMethodName($result, $bigData) : bool
+{
+    return $this->scenario1MethodName($result, $bigData)
+        && // your fail check for scenario 1
+}
+```
+To get statistics of each category,
+```
+[
+    'scenario1Total'        => $yourBigTestInstance->getCatgoryCount('scenario1'),
+    'scenario1SuccessTotal' => $yourBigTestInstance->getCategoryCount('scenario1Success'),
+    'scenario1FailTotal'    => $yourBigTestInstance->getCategoryCount('scenario1Fail'),
+]
+```
+
+To get detailed id's in each category,
+```
+[
+    'scenario1Ids'        => $yourBigTestInstance->getCatgoryErrors('scenario1'),
+    'scenario1SuccessIds' => $yourBigTestInstance->getCategoryErrors('scenario1Success'),
+    'scenario1FailIds'    => $yourBigTestInstance->getCategoryErrors('scenario1Fail'),
+]
+```
