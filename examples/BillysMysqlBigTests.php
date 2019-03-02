@@ -45,13 +45,12 @@ $queryBuilder = (new Builder($mysqlConnection))->from('users');
 
 $bigTest = (new BillysMysqlBigTests($queryBuilder));
 $bigTest->runAll();
-echo json_encode($bigTest->getSuccesses());
-echo "\n";
-echo json_encode($bigTest->getErrors());
-echo "\n";
-echo json_encode($bigTest->getCategoryErrors('category1'));
-echo "\n";
-echo json_encode($bigTest->getUncategorizedErrors());
-echo "\n";
-echo json_encode(['Total' => $bigTest->getTotalCount(), 'Success' => $bigTest->getTotalSuccessCount(), 'Error' => $bigTest->getTotalErrorCount(), 'error in category1' => $bigTest->getCategoryErrorCount('category1')]);
-echo "\n";
+var_export([
+    'Total'           => $bigTest->getTotalCount(),
+    'Success'         => $bigTest->getTotalSuccessCount(),
+    'Error'           => $bigTest->getTotalErrorCount(),
+    'category1-count' => $bigTest->getCategoryErrorCount('category1'),
+    'successes'       => json_encode($bigTest->getSuccesses()),
+    'errors'          => json_encode($bigTest->getErrors()),
+    'category1-ids'   => json_encode($bigTest->getCategoryErrors('category1')),
+]);
