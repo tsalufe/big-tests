@@ -3,7 +3,8 @@ Easily test your model and logic against your big data set
 
 # install
 ```
-git clone https://github.com/tsalufe/big-tests.git
+composer config repositories.big-tests vcs https://github.com/tsalufe/big-tests
+composer require big-tests/big-tests
 ```
 
 # example
