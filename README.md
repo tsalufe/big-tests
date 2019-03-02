@@ -24,6 +24,8 @@ mysql -e "insert into homestead.users values(1234, 'test first name', 'test last
 ```
 Then run
 ```
+mkdir examples/
+cp vendor/big-tests/big-tests/examples/BillysMysqlBigTests.php examples/
 php examples/BillysMysqlBigTests.php
 ```
 The output is like,
