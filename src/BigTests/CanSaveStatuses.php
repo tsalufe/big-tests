@@ -47,14 +47,17 @@ trait CanSaveStatuses
         }
     }
 
-    public function getCategoryErrors(string $category) : array
+    public function getCategoryStatuses(string $category = null) : array
     {
+        if(is_null($category)) {
+            return $this->categoryStatuses;
+        }
         return $this->categoryStatuses[$category] ?? [];
     }
 
-    public function getCategoryErrorCount(string $category) : int
+    public function getCategoryStatusCount(string $category) : int
     {
-        return count($this->getCategoryErrors($category));
+        return count($this->getCategoryStatuses($category));
     }
 
     public function getErrors() : array

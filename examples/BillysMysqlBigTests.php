@@ -55,8 +55,8 @@ var_export([
     'Total'           => $bigTest->getTotalCount(),
     'Success'         => $bigTest->getTotalSuccessCount(),
     'Error'           => $bigTest->getTotalErrorCount(),
-    'category1-count' => $bigTest->getCategoryErrorCount('category1'),
+    'category1-count' => $bigTest->getCategoryStatusCount('category1'),
     'successes'       => json_encode($bigTest->getSuccesses()),
     'errors'          => json_encode($bigTest->getErrors()),
-    'category1-ids'   => json_encode($bigTest->getCategoryErrors('category1')),
+    'category1-ids'   => json_encode($bigTest->getCategoryStatuses('category1')),
 ]);
